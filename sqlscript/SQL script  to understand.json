@@ -1,0 +1,17 @@
+{
+	"name": "SQL script  to understand",
+	"properties": {
+		"content": {
+			"query": "SELECT    o.name AS tableName,  pnp.pdw_node_id,  pnp.distribution_id,   \npnp.rows FROM    sys.pdw_nodes_partitions AS pnp    \nJOIN sys.pdw_nodes_tables AS NTables    ON pnp.object_id = NTables.object_id     \nAND pnp.pdw_node_id = NTables.pdw_node_id     \nJOIN sys.pdw_table_mappings AS TMap    ON NTables.name = TMap.physical_name    \nAND substring(TMap.physical_name,40, 10) = pnp.distribution_id    \nJOIN sys.objects AS o     ON TMap.object_id = o.object_id    \nWHERE o.name in ('orders2')   ORDER BY distribution_id",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "saisqldpool1",
+				"poolName": "saisqldpool1"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

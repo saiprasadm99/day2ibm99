@@ -1,0 +1,17 @@
+{
+	"name": "SQL script for table creation",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE Orders2  (      \n    OrderID int IDENTITY(1,1) NOT NULL     ,\n    OrderDate datetime NOT NULL     ,\n    OrderDescription char(15) DEFAULT 'NewOrder' )  \n    WITH  \n    (   CLUSTERED INDEX (OrderID)  ,   \n    DISTRIBUTION = HASH(OrderDate)  );",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "saisqldpool1",
+				"poolName": "saisqldpool1"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
